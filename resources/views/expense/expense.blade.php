@@ -5,18 +5,24 @@
         <div class="col-12 mb-30">
             <div class="box">
                 <div class="box-head">
-                    <h3 class="title">Product List</h3>
+                    <h3 class="title">Expense Lists</h3>
                 </div>
                 <div class="box-body">
-                    <button href="{{ route('owner.create') }}" data-toggle="modal" data-target="#expensetypeModal"
-                        class="btn btn-sm btn-primary">Add New</button>
+                    <a href="{{ route('expense.create') }}" class="btn btn-sm btn-primary">Add New</a>
 
                     <table class="table table-bordered data-table data-table-export table table-dark table-striped">
                         <thead>
                             <tr>
                                 <th>SL#</th>
                                 <th>ID</th>
+                                <th>Owner Name</th>
+                                <th>Product Name</th>
+                                <th>Service Name</th>
+                                <th>Type</th>
                                 <th>Name</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Notes</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

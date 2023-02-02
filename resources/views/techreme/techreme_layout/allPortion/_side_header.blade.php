@@ -54,7 +54,7 @@ $route = Route::current()->getName();
                     <ul class="side-header-sub-menu">
                         <li><a data-clipboard-text="fa fa-square" href="{{ route('expensetype.view') }}"><i
                                     class="fa fa-square" aria-hidden="true"></i><span>Expense Types</span></a></li>
-                        <li><a data-clipboard-text="fa fa-square" href="{{ route('Register.client.view') }}"><i
+                        <li><a data-clipboard-text="fa fa-square" href="{{ route('expense.view') }}"><i
                                     class="fa fa-square" aria-hidden="true"></i><span>Expenses</span></a></li>
                     </ul>
                 </li>

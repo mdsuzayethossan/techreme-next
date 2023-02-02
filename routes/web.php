@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth', 'techreme']], function () {
     });
     Route::prefix('expense')->group(function () {
         Route::get('view', 'ExpenseController@view')->name('expense.view');
+        Route::get('create', 'ExpenseController@create')->name('expense.create');
         Route::post('store', 'ExpenseController@store')->name('expense.store');
         Route::get('edit/{id}', 'ExpenseController@edit')->name('expense.edit');
         Route::post('update/{id}', 'ExpenseController@update')->name('expense.update');
