@@ -68,11 +68,18 @@ Route::group(['middleware' => ['auth', 'techreme']], function () {
     });
     Route::prefix('expense-type')->group(function () {
         Route::get('view', 'ExpenseTypeController@view')->name('expensetype.view');
-        Route::get('create', 'techreme\ownerController@create')->name('owner.create');
-        Route::post('store', 'techreme\ownerController@store')->name('owner.store');
-        Route::get('edit/{id}', 'techreme\ownerController@edit')->name('owner.edit');
-        Route::post('update/{id}', 'techreme\ownerController@update')->name('owner.update');
-        Route::delete('delete/{id}', 'techreme\ownerController@delete')->name('owner.delete');
+        Route::post('store', 'ExpenseTypeController@store')->name('expensetype.store');
+        Route::get('edit/{id}', 'ExpenseTypeController@edit')->name('expensetype.edit');
+        Route::post('update/{id}', 'ExpenseTypeController@update')->name('expensetype.update');
+        Route::delete('delete/{id}', 'ExpenseTypeController@delete')->name('expensetype.delete');
         Route::get('details/{id}', 'techreme\ownerController@details')->name('owner.details');
+    });
+    Route::prefix('expense')->group(function () {
+        Route::get('view', 'ExpenseTypeController@view')->name('expense.view');
+        Route::post('store', 'ExpenseTypeController@store')->name('expense.store');
+        Route::get('edit/{id}', 'ExpenseTypeController@edit')->name('expense.edit');
+        Route::post('update/{id}', 'ExpenseTypeController@update')->name('expense.update');
+        Route::delete('delete/{id}', 'ExpenseTypeController@delete')->name('expense.delete');
+        Route::get('details/{id}', 'techreme\ownerController@details')->name('expense.details');
     });
 });
