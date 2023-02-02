@@ -82,14 +82,42 @@
                                 @enderror
                             </div>
                             <div class="col-lg-4 col-md-6 col-12 mb-20">
-                                <p><span style="color: #a71d2a">*</span>Expense types</p><input type="text"
-                                    name="name" value="{{ @$editData->name }}"
-                                    class="form-control form-control-sm @error('name') is-invalid @enderror"
-                                    placeholder="Product Name">
+                                <p><span style="color: #a71d2a">*</span>Expense name</p><input type="text" name="name"
+                                    value="{{ @$editData->name }}" class="form-control @error('name') is-invalid @enderror"
+                                    placeholder="Expense Name">
                                 @error('name')
                                     <div class=" text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="col-lg-4 col-md-6 col-12 mb-20">
+                                <p><span style="color: #a71d2a">*</span>Amount</p><input type="text" name="amount"
+                                    value="{{ @$editData->amount }}"
+                                    class="form-control @error('amount') is-invalid @enderror" placeholder="Expense amount">
+                                @error('amount')
+                                    <div class=" text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-12 mb-20">
+                                <p>Date</p>
+                                <input type="text" name="started_from" value="{{ @$editData->started_from }}"
+                                    class="form-control input-date-single @error('started_from') is-invalid @enderror">
+                                @error('started_from')
+                                    <div class=" text-danger">{{ $message }}</div>
+                                @enderror
+                                <!--Single Date <Picker--><br>
+                            </div>
+                        </div>
+                        <div class="row mbn-20">
+
+                            <!--Summernote Start-->
+                            <div class="col-12 mb-30">
+                                <p>Description</p>
+                                <textarea name="description" class="summernote @error('description') is-invalid @enderror">{{ @$editData->description }}</textarea>
+                                @error('description')
+                                    <div class=" text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <!--Summernote End-->
                         </div>
                     </div>
                     <!--Form Size End-->
