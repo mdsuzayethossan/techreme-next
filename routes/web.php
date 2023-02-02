@@ -75,11 +75,11 @@ Route::group(['middleware' => ['auth', 'techreme']], function () {
         Route::get('details/{id}', 'techreme\ownerController@details')->name('owner.details');
     });
     Route::prefix('expense')->group(function () {
-        Route::get('view', 'ExpenseTypeController@view')->name('expense.view');
-        Route::post('store', 'ExpenseTypeController@store')->name('expense.store');
-        Route::get('edit/{id}', 'ExpenseTypeController@edit')->name('expense.edit');
-        Route::post('update/{id}', 'ExpenseTypeController@update')->name('expense.update');
-        Route::delete('delete/{id}', 'ExpenseTypeController@delete')->name('expense.delete');
-        Route::get('details/{id}', 'techreme\ownerController@details')->name('expense.details');
+        Route::get('view', 'ExpenseController@view')->name('expense.view');
+        Route::post('store', 'ExpenseController@store')->name('expense.store');
+        Route::get('edit/{id}', 'ExpenseController@edit')->name('expense.edit');
+        Route::post('update/{id}', 'ExpenseController@update')->name('expense.update');
+        Route::delete('delete/{id}', 'ExpenseController@delete')->name('expense.delete');
+        Route::get('details/{id}', 'ExpenseController@details')->name('expense.details');
     });
 });

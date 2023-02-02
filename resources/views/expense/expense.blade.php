@@ -21,21 +21,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($expensetypes as $expensetype)
+                            @foreach ($expenses as $expense)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $expensetype->id }}</td>
-                                    <td>{{ $expensetype->name }}</td>
+                                    <td>{{ $expense->id }}</td>
+                                    <td>{{ $expense->name }}</td>
                                     <td class="d-flex justify-content-center">
                                         <div class="row">
                                             <a title="Edit" class="edit button button-box button-xs button-primary"
-                                                href="{{ route('expensetype.edit', $expensetype->id) }}"><i
+                                                href="{{ route('expensetype.edit', $expense->id) }}"><i
                                                     class="zmdi zmdi-edit"></i>
                                             </a>
                                             <a title="Details" class="edit button button-box button-xs button-success"
-                                                href="{{ route('owner.details', $expensetype->id) }}"><i
+                                                href="{{ route('owner.details', $expense->id) }}"><i
                                                     class="zmdi zmdi-more"></i></a>
-                                            <form action="{{ route('expense.delete', $expensetype->id) }}" method="post">
+                                            <form action="{{ route('expense.delete', $expense->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button title="Delete"
