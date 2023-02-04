@@ -69,10 +69,10 @@
                             <div class="col-lg-4 col-md-6 col-12 mb-20">
                                 <p><span style="color: #a71d2a">*</span>Expense types</p>
                                 <select class="form-control select2 @error('type') is-invalid @enderror" name="type">
-                                    <option>Select expense type</option>
+                                    <option value="">Select expense type</option>
                                     @foreach ($types as $type)
                                         <option value="{{ @$type->id }}"
-                                            {{ @$editData->id == $type->id ? 'selected' : '' }}>
+                                            {{ @$editData->type == $type->id ? 'selected' : '' }}>
                                             {{ $type->name }}</option>
                                     @endforeach
                                 </select>

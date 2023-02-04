@@ -67,9 +67,8 @@ class ExpenseController extends Controller
         $data['services'] = service::all();
         return  view('expense.expense_add_edit', $data);
     }
-    public function update(Expense $request, $id)
+    public function update(Request $request, $id)
     {
-        dd($request->all());
         $data = Expense::find($id);
         $data->owner_id             = $request->owner_id;
         $data->product_id             = $request->product_id;

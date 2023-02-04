@@ -22,20 +22,28 @@ class ExpenseTypeController extends Controller
         $data = new ExpenseType();
         $data->name             = $request->name;
         $data->save();
-        return back()->with('expense_type_added', 'Expense type added successfully');
+        $notification = array(
+            'message' => 'Expense type added successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->route('expense.view')->with($notification);
     }
     public function edit($id)
     {
         $data['editData'] = ExpenseType::findOrFail($id);
         return  view('expense_type.expensetype_edit', $data);
     }
-    public function update(ExpenseType $request, $id)
+    public function update(Request $request, $id)
     {
-        dd($request->name);
+        // dd($request->name);
         $data = ExpenseType::find($id);
         $data->name             = $request->name;
         $data->save();
-        return back()->with('expense_type_updated', 'Expense type updated successfully');
+        $notification = array(
+            'message' => 'Expense type updated successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->route('expense.view')->with($notification);
     }
 
     public function delete($id)
@@ -43,7 +51,10 @@ class ExpenseTypeController extends Controller
         $expensetype = ExpenseType::findOrFail($id);
 
         $expensetype->delete();
-
-        return back()->with('expense_type_deleted', 'Expense type deleted successfully');
+        $notification = array(
+            'message' => 'Expense type deleted successfully',
+            'alert-type' => 'error'
+        );
+        return redirect()->route('expense.view')->with($notification);
     }
 }
