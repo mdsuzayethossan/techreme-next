@@ -31,11 +31,18 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $expense->id }}</td>
+                                    <td>{{ $expense->owner_id }}</td>
+                                    <td>{{ $expense->product_id }}</td>
+                                    <td>{{ $expense->service_id }}</td>
+                                    <td>{{ $expense->type }}</td>
                                     <td>{{ $expense->name }}</td>
+                                    <td>{{ $expense->amount }}</td>
+                                    <td>{{ $expense->date }}</td>
+                                    <td>{!! $expense->notes !!}</td>
                                     <td class="d-flex justify-content-center">
                                         <div class="row">
                                             <a title="Edit" class="edit button button-box button-xs button-primary"
-                                                href="{{ route('expensetype.edit', $expense->id) }}"><i
+                                                href="{{ route('expense.edit', $expense->id) }}"><i
                                                     class="zmdi zmdi-edit"></i>
                                             </a>
                                             <a title="Details" class="edit button button-box button-xs button-success"
@@ -46,7 +53,7 @@
                                                 @method('delete')
                                                 <button title="Delete"
                                                     class="delete button button-box button-xs button-danger"
-                                                    onclick="return confirm('Are you confirm to delete this expense type')"><i
+                                                    onclick="return confirm('Are you confirm to delete this expense item.')"><i
                                                         class="zmdi zmdi-delete"></i></button>
                                             </form>
                                         </div>

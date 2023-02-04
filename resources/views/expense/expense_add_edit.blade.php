@@ -27,7 +27,7 @@
                                     name="owner_id">
                                     <option>Select Owner</option>
                                     @foreach ($owners as $owner)
-                                        <option value="{{ $owner->id }}"
+                                        <option value="{{ @$owner->id }}"
                                             {{ @$editData->owner_id == $owner->id ? 'selected' : '' }}>
                                             {{ $owner->owner_name }}</option>
                                     @endforeach
@@ -42,7 +42,7 @@
                                     name="product_id">
                                     <option>Select Product</option>
                                     @foreach ($products as $product)
-                                        <option value="{{ $product->id }}"
+                                        <option value="{{ @$product->id }}"
                                             {{ @$editData->product_id == $product->id ? 'selected' : '' }}>
                                             {{ $product->name }}</option>
                                     @endforeach
@@ -57,7 +57,7 @@
                                     name="service_id">
                                     <option>Select Service</option>
                                     @foreach ($services as $service)
-                                        <option value="{{ $service->id }}"
+                                        <option value="{{ @$service->id }}"
                                             {{ @$editData->service_id == $service->id ? 'selected' : '' }}>
                                             {{ $service->name }}</option>
                                     @endforeach
@@ -71,7 +71,7 @@
                                 <select class="form-control select2 @error('type') is-invalid @enderror" name="type">
                                     <option>Select expense type</option>
                                     @foreach ($types as $type)
-                                        <option value="{{ $type->id }}"
+                                        <option value="{{ @$type->id }}"
                                             {{ @$editData->id == $type->id ? 'selected' : '' }}>
                                             {{ $type->name }}</option>
                                     @endforeach

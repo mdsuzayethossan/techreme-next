@@ -9,6 +9,7 @@ use App\owner;
 use App\product;
 use App\service;
 use App\User;
+use Carbon\Carbon;
 
 class ExpenseController extends Controller
 {
@@ -58,16 +59,32 @@ class ExpenseController extends Controller
     }
     public function edit($id)
     {
+        $data['title'] = 'Edit Service';
         $data['editData'] = Expense::findOrFail($id);
-        return  view('expense.Expense_edit', $data);
+        $data['types'] = ExpenseType::all();
+        $data['owners'] = owner::all();
+        $data['products'] = product::all();
+        $data['services'] = service::all();
+        return  view('expense.expense_add_edit', $data);
     }
     public function update(Expense $request, $id)
     {
-        dd($request->name);
+        dd($request->all());
         $data = Expense::find($id);
+        $data->owner_id             = $request->owner_id;
+        $data->product_id             = $request->product_id;
+        $data->service_id             = $request->service_id;
+        $data->type             = $request->type;
         $data->name             = $request->name;
+        $data->amount             = $request->amount;
+        $data->date             = $request->date;
+        $data->notes             = $request->notes;
         $data->save();
-        return back()->with('expense_updated', 'Expense type updated successfully');
+        $notification = array(
+            'message' => 'Expense updated successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->route('expense.view')->with($notification);
     }
 
     public function delete($id)
@@ -75,7 +92,11 @@ class ExpenseController extends Controller
         $Expense = Expense::findOrFail($id);
 
         $Expense->delete();
+        $notification = array(
+            'message' => 'Expense Info has been deleted Successfully',
+            'alert-type' => 'error'
+        );
 
-        return back()->with('expense_deleted', 'Expense type deleted successfully');
+        return redirect()->route('expense.view')->with($notification);
     }
 }
