@@ -20,9 +20,9 @@ class CreateExpensesTable extends Migration
             $table->integer('service_id')->nullable();
             $table->string('type');
             $table->string('name');
-            $table->double('amount', 8, 2);
-            $table->date('date');
-            $table->text('notes')->nullable();
+            $table->double('amount', 8, 2)->nullable();
+            $table->string('date')->nullable();
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }

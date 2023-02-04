@@ -31,13 +31,30 @@ class ExpenseController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'owner_id' => 'required',
+            'product_id' => 'required',
+            'service_id' => 'required',
+            'type' => 'required',
             'name' => 'required',
+            'amount' => 'required',
+            'date' => 'required',
         ]);
 
         $data = new Expense();
+        $data->owner_id             = $request->owner_id;
+        $data->product_id             = $request->product_id;
+        $data->service_id             = $request->service_id;
+        $data->type             = $request->type;
         $data->name             = $request->name;
+        $data->amount             = $request->amount;
+        $data->date             = $request->date;
+        $data->notes             = $request->notes;
         $data->save();
-        return back()->with('expense_added', 'Expense type added successfully');
+        $notification = array(
+            'message' => 'Expense Created successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->route('expense.view')->with($notification);
     }
     public function edit($id)
     {

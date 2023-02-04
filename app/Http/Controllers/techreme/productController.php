@@ -12,21 +12,21 @@ class productController extends Controller
     public function view()
     {
         $data['title'] = 'Product List';
-        $data['products'] = product::orderBy('id','desc')->get();
+        $data['products'] = product::orderBy('id', 'desc')->get();
         $data['serial'] = 1;
-        return  view('techreme.techreme_pages.Product.product_list',$data);
+        return  view('techreme.techreme_pages.Product.product_list', $data);
     }
 
     public function create()
     {
-        $data['title']='Add New';
+        $data['title'] = 'Add New';
         $data['products'] = product::all();
-        return view('techreme.techreme_pages.Product.Add_&_Edit_product',$data);
+        return view('techreme.techreme_pages.Product.Add_&_Edit_product', $data);
     }
 
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required|unique:products,name',
             'status' => 'required'
         ]);
@@ -45,8 +45,7 @@ class productController extends Controller
         $data->db_type              = $request->db_type;
         $data->status               = $request->status;
 
-        if ($request->file('image'))
-        {
+        if ($request->file('image')) {
             $file = $request->file('image');
             $file_name = date('d.m.Y') . '_' . time() . '_' . rand(0000, 9999) . '_' . 'TRP_' . $file->getClientOriginalName();
             $file->move(public_path('Tech_image/Product/'), $file_name);
@@ -55,8 +54,7 @@ class productController extends Controller
 
         $data->save();
 
-        $notification = array
-        (
+        $notification = array(
             'message' => 'Product Created successfully',
             'alert-type' => 'info'
         );
@@ -68,7 +66,7 @@ class productController extends Controller
     {
         $data['title'] = 'Edit Product';
         $data['editData'] = product::findOrFail($id);
-        return  view('techreme.techreme_pages.Product.Add_&_Edit_product',$data);
+        return  view('techreme.techreme_pages.Product.Add_&_Edit_product', $data);
     }
 
     public function update(productRequest $request, $id)
@@ -88,19 +86,17 @@ class productController extends Controller
         $data->db_type              = $request->db_type;
         $data->status               = $request->status;
 
-        if($request->file('image'))
-        {
+        if ($request->file('image')) {
             $file = $request->file('image');
-            @unlink(public_path('Tech_image/Product/'.$data->image));
-            $file_name = date('d.m.Y').'_'.time().'_'.rand(0000,9999).'_'.'TRP_'.$file->getClientOriginalName();
-            $file->move(public_path('Tech_image/Product/'),$file_name);
+            @unlink(public_path('Tech_image/Product/' . $data->image));
+            $file_name = date('d.m.Y') . '_' . time() . '_' . rand(0000, 9999) . '_' . 'TRP_' . $file->getClientOriginalName();
+            $file->move(public_path('Tech_image/Product/'), $file_name);
             $data['image'] = $file_name;
         }
 
         $data->save();
 
-        $notification = array
-        (
+        $notification = array(
             'message' => 'Product updated successfully',
             'alert-type' => 'success'
         );
@@ -112,15 +108,13 @@ class productController extends Controller
     {
         $product = product::findOrFail($id);
 
-        if(file_exists('public/Tech_image/Product/'.$product->image) AND !empty($product->image))
-        {
-            unlink('public/Tech_image/Product/'.$product->image);
+        if (file_exists('public/Tech_image/Product/' . $product->image) and !empty($product->image)) {
+            unlink('public/Tech_image/Product/' . $product->image);
         }
 
         $product->delete();
 
-        $notification = array
-        (
+        $notification = array(
             'message' => 'Product Info has been deleted Successfully',
             'alert-type' => 'error'
         );
@@ -132,6 +126,6 @@ class productController extends Controller
     {
         $data['title'] = 'Product Details';
         $data['product'] = product::findOrFail($id);
-        return view('techreme.techreme_pages.Product.product_details',$data);
+        return view('techreme.techreme_pages.Product.product_details', $data);
     }
 }
