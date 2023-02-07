@@ -26,7 +26,7 @@ class ExpenseTypeController extends Controller
             'message' => 'Expense type added successfully',
             'alert-type' => 'info'
         );
-        return redirect()->route('expense.view')->with($notification);
+        return redirect()->route('expensetype.view')->with($notification);
     }
     public function edit($id)
     {
@@ -43,7 +43,7 @@ class ExpenseTypeController extends Controller
             'message' => 'Expense type updated successfully',
             'alert-type' => 'info'
         );
-        return redirect()->route('expense.view')->with($notification);
+        return redirect()->route('expensetype.view')->with($notification);
     }
 
     public function delete($id)
@@ -55,6 +55,6 @@ class ExpenseTypeController extends Controller
             'message' => 'Expense type deleted successfully',
             'alert-type' => 'error'
         );
-        return redirect()->route('expense.view')->with($notification);
+        return back()->with($notification);
     }
 }

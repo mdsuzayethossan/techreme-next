@@ -96,6 +96,6 @@ class ExpenseController extends Controller
             'alert-type' => 'error'
         );
 
-        return redirect()->route('expense.view')->with($notification);
+        return back()->with($notification);
     }
 }
