@@ -58,6 +58,13 @@ $route = Route::current()->getName();
                                     class="fa fa-square" aria-hidden="true"></i><span>Expenses</span></a></li>
                     </ul>
                 </li>
+                <li class="has-sub-menu"><a data-clipboard-text="fa fa-th-large" href="#"><i class="fa fa-usd"
+                            aria-hidden="true"></i> <span>Service Level Agreement</span></a>
+                    <ul class="side-header-sub-menu">
+                        <li><a data-clipboard-text="fa fa-square" href="{{ route('sla.view') }}"><i class="fa fa-square"
+                                    aria-hidden="true"></i><span>SLA</span></a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
 

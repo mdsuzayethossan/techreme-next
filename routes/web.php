@@ -83,4 +83,13 @@ Route::group(['middleware' => ['auth', 'techreme']], function () {
         Route::delete('delete/{id}', 'ExpenseController@delete')->name('expense.delete');
         Route::get('details/{id}', 'ExpenseController@details')->name('expense.details');
     });
+    Route::prefix('sla')->group(function () {
+        Route::get('view', 'SlaController@view')->name('sla.view');
+        Route::get('create', 'SlaController@create')->name('sla.create');
+        Route::post('store', 'SlaController@store')->name('sla.store');
+        Route::get('edit/{id}', 'SlaController@edit')->name('sla.edit');
+        Route::post('update/{id}', 'SlaController@update')->name('sla.update');
+        Route::delete('delete/{id}', 'SlaController@delete')->name('sla.delete');
+        Route::get('details/{id}', 'SlaController@details')->name('sla.details');
+    });
 });

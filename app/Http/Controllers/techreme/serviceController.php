@@ -38,6 +38,7 @@ class serviceController extends Controller
         $data->version              = $request->version;
         $data->description          = $request->description;
         $data->requirement          = $request->requirement;
+        $data->amount               = $request->amount;
         $data->customize_scope      = $request->customize_scope;
         $data->privilege            = $request->privilege;
         $data->opportunity          = $request->opportunity;
@@ -80,6 +81,7 @@ class serviceController extends Controller
         $data->version              = $request->version;
         $data->description          = $request->description;
         $data->requirement          = $request->requirement;
+        $data->amount               = $request->amount;
         $data->customize_scope      = $request->customize_scope;
         $data->privilege            = $request->privilege;
         $data->opportunity          = $request->opportunity;

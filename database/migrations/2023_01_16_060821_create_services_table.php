@@ -17,10 +17,9 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('custom_id', 8)->nullable();
             $table->string('name')->unique();
+            $table->text('requirement')->nullable();
             $table->string('category')->nullable();
             $table->string('version')->nullable();
-            $table->string('description')->nullable();
-            $table->string('requirement')->nullable();
             $table->string('customize_scope')->nullable();
             $table->string('privilege')->nullable();
             $table->string('opportunity')->nullable();
@@ -29,6 +28,9 @@ class CreateServicesTable extends Migration
             $table->string('image')->nullable();
             $table->enum('service_type', ['gift', 'loyalty_card', 'silver', 'gold', 'platinum', 'diamond', 'premium'])->nullable();
             $table->enum('status', ['active', 'inactive'])->nullable();
+            $table->decimal('amount', 8, 2)->nullable();
+            $table->decimal('profit', 8, 2)->nullable();
+            $table->text('description')->nullable();
             $table->string('creator')->nullable();
             $table->string('updater')->nullable();
             $table->timestamps();
